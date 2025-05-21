@@ -1,0 +1,45 @@
+.controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 2rem 3rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+      background-color: var(--bg-color);
+    }
+    .search-box {
+      border-radius: 5px;
+      padding: 1rem 2rem;
+      width: 300px;
+      font-size: 1rem;
+      outline: none;
+      background: var(--element-bg);
+      color: var(--text-color);
+      border: 1px solid var(--input-bg);
+    }
+    .filter-region {
+      border-radius: 5px;
+      padding: 1rem;
+      font-size: 1rem;
+      cursor: pointer;
+      background: var(--element-bg);
+      color: var(--text-color);
+      border: 1px solid var(--input-bg);
+    }
+    .countries-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+      margin: 0 3rem 3rem 3rem;
+    }
+    .no-results {
+      color: var(--text-color);
+      text-align: center;
+      width: 100%;
+      grid-column: 1 / -1;
+    }
+    @media (max-width: 600px) {
+      .controls, .countries-grid {
+        margin: 1rem;
+      }
+    }

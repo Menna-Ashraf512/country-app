@@ -1,0 +1,34 @@
+.country-card {
+border-radius: 8px;
+overflow: hidden;
+box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+transition: transform 0.2s;
+background: var(--element-bg);
+color: var(--text-color);
+cursor: pointer;
+}
+.country-card:hover {
+transform: translateY(-5px) scale(1.03);
+}
+.country-flag {
+width: 100%;
+height: 160px;
+object-fit: cover;
+display: block;
+}
+.country-info {
+padding: 1.5rem;
+}
+.country-info h2 {
+margin: 0 0 1rem 0;
+font-size: 1.2rem;
+font-weight: 800;
+}
+.country-info p {
+margin: 0.3rem 0;
+font-size: 1rem;
+font-weight: 600;
+}
+.country-info span {
+font-weight: 400;
+}

@@ -1,0 +1,27 @@
+<div class="controls">
+      <input 
+        class="search-box" 
+        type="text" 
+        placeholder="Search for a country..."
+        [(ngModel)]="searchTerm"
+        (ngModelChange)="onSearch()">
+      <select 
+        class="filter-region" 
+        [(ngModel)]="selectedRegion"
+        (ngModelChange)="onRegionChange()">
+        <option>Filter by Region</option>
+        <option>Africa</option>
+        <option>America</option>
+        <option>Asia</option>
+        <option>Europe</option>
+        <option>Oceania</option>
+      </select>
+    </div>
+    <div class="countries-grid">
+      @for (country of filteredCountries; track country.alpha3Code) {
+        <app-country-card [country]="country"></app-country-card>
+      }
+      @empty {
+        <p class="no-results">No countries found.</p>
+      }
+    </div>

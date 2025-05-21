@@ -1,0 +1,9 @@
+    <div class="country-card" [routerLink]="['/country', country.alpha3Code]">
+      <img class="country-flag" [src]="country.flag" [alt]="country.name + ' Flag'">
+      <div class="country-info">
+        <h2>{{ country.name }}</h2>
+        <p><b>Population:</b> <span>{{ country.population | number }}</span></p>
+        <p><b>Region:</b> <span>{{ country.region }}</span></p>
+        <p><b>Capital:</b> <span>{{ country.capital }}</span></p>
+      </div>
+    </div>

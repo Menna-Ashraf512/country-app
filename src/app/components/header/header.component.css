@@ -1,0 +1,22 @@
+ header {
+      padding: 1rem 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-left: 3rem;
+      padding-right: 3rem;
+      background-color: var(--bg-header);
+      box-shadow: 0px 1px 20px 0px var(--bg-shadow);
+    }
+    h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      margin: 0;
+    }
+    .dark-mode-toggle {
+      font-size: 1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }

@@ -18,10 +18,20 @@
       </select>
     </div>
     <div class="countries-grid">
-      @for (country of filteredCountries; track country.alpha3Code) {
+      @for (country of paginatedCountries; track country.alpha3Code) {
         <app-country-card [country]="country"></app-country-card>
       }
       @empty {
         <p class="no-results">No countries found.</p>
       }
+    </div>
+    <div class="pagination" *ngIf="totalPages > 1">
+      <button (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 1">&#8592;</button>
+      <button 
+        *ngFor="let page of displayedPages" 
+        (click)="goToPage(page)" 
+        [class.active]="currentPage === page">
+        {{ page }}
+      </button>
+      <button (click)="goToPage(currentPage + 1)" [disabled]="currentPage === totalPages">&#8594;</button>
     </div>

@@ -5,12 +5,13 @@ import { RouterModule } from '@angular/router';
 import { CountryCardComponent } from '../country-card/country-card.component';
 import { CountryService } from '../../services/country.service';
 import { Country } from '../../interfaces/country.interface';
+import { get } from 'node:http';
 
 @Component({
   selector: 'app-country-list',
   imports: [CommonModule, FormsModule, RouterModule, CountryCardComponent],
   templateUrl: './country-list.component.html',
-  styleUrls: ['./country-list.component.css']
+  styleUrls: ['./country-list.component.css'],
 })
 export class CountryListComponent implements OnInit {
   countries: Country[] = [];
@@ -21,12 +22,14 @@ export class CountryListComponent implements OnInit {
   constructor(private countryService: CountryService) {}
 
   ngOnInit() {
-    this.countryService.getAllCountries().subscribe(countries => {
+    this.getAll();
+  }
+  getAll() {
+    this.countryService.getAllCountries().subscribe((countries) => {
       this.countries = countries;
       this.filteredCountries = countries;
     });
   }
-
   onSearch() {
     this.filterCountries();
   }
@@ -37,15 +40,18 @@ export class CountryListComponent implements OnInit {
 
   private filterCountries() {
     let filtered = this.countries;
-    
+
     if (this.searchTerm) {
       filtered = this.countryService.searchCountries(filtered, this.searchTerm);
     }
-    
+
     if (this.selectedRegion !== 'Filter by Region') {
-      filtered = this.countryService.filterByRegion(filtered, this.selectedRegion);
+      filtered = this.countryService.filterByRegion(
+        filtered,
+        this.selectedRegion
+      );
     }
-    
+
     this.filteredCountries = filtered;
   }
-} 
+}

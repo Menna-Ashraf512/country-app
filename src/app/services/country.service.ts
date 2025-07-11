@@ -10,15 +10,23 @@ import { RawCountry } from '../interfaces/rowCountry.interface';
 export class CountryService {
   private apiUrl = 'https://restcountries.com/v3.1';
 
+  private regionMapping: { [key: string]: string } = {
+    'Africa': 'Africa',
+    'Americas': 'America',
+    'Asia': 'Asia',
+    'Europe': 'Europe',
+    'Oceania': 'Oceania'
+  };
+
   constructor(private http: HttpClient) {}
 
   
   getAllCountries(): Observable<Country[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/all`).pipe(
+    return this.http.get<any[]>(`${this.apiUrl}/all?fields=name,flags,population,region,capital,cca3,borders`).pipe(
       map(data => data.map(country => ({
         name: country.name.common,
         population: country.population,
-        region: country.region,
+        region: this.regionMapping[country.region] || country.region,
         capital: country.capital?.[0] || 'N/A',
         flag: country.flags?.svg || country.flags?.png,
         alpha3Code: country.cca3,
